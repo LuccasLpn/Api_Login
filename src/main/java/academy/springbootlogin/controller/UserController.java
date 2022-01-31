@@ -31,7 +31,7 @@ public class UserController {
 
     @DeleteMapping(path = "/api/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        roleService.delete(id);
+       roleService.delete(id);
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -39,8 +39,8 @@ public class UserController {
     @PutMapping(path = "/api/replace")
     public ResponseEntity<Void> replace(@RequestBody UserPutRequestBody userPutRequestBody) {
         userPutRequestBody.setPassword(encoder.encode(userPutRequestBody.getPassword()));
-        userService.replace(userPutRequestBody);
         roleService.replace(userPutRequestBody);
+        userService.replace(userPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

@@ -8,7 +8,7 @@ public class RoleCreator {
         return Role.builder()
                 .id(1L)
                 .username("Luccas")
-                .password("LU072324")
+                .password("Lu072324")
                 .authorities("ROLE_ADMIN")
                 .build();
 

@@ -30,13 +30,14 @@ class RoleServiceTest {
     @Mock
     private RoleRepository roleRepository;
 
-
     @BeforeEach
     void setUp(){
 
         PageImpl<Role> rolePage = new PageImpl<>(
                 List.of(RoleCreator.createdRoleValid())
         );
+
+
 
         BDDMockito.when(roleRepository.save(ArgumentMatchers.any(Role.class)))
                 .thenReturn(RoleCreator.createdRoleValid());
