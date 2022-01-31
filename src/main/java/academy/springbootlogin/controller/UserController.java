@@ -24,8 +24,8 @@ public class UserController {
 
     @PostMapping(path = "/api/save")
     public ResponseEntity<User>insert(@RequestBody @Valid UserPostRequestBody user){
-        roleService.save(user);
         user.setPassword(encoder.encode(user.getPassword()));
+        roleService.save(user);
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
     }
 

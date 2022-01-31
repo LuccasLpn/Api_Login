@@ -1,10 +1,9 @@
 package academy.springbootlogin.config;
 
-import academy.springbootlogin.service.RoleService;
+import academy.springbootlogin.service.RoleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final RoleService roleService;
+    private final RoleServiceImpl roleServiceImpl;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -30,14 +29,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/replace/**").hasRole("ADMIN")
                 .antMatchers("/api/save").permitAll()
                 .and().formLogin().and().authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and().httpBasic();
+                .anyRequest().permitAll().and().httpBasic();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(roleService)
+        auth.userDetailsService(roleServiceImpl)
                 .passwordEncoder(passwordEncoder());
     }
 

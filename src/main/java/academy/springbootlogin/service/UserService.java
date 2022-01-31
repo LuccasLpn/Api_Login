@@ -1,12 +1,8 @@
 package academy.springbootlogin.service;
 
-import academy.springbootlogin.domain.Role;
 import academy.springbootlogin.domain.User;
 import academy.springbootlogin.mapper.UserMapper;
-import academy.springbootlogin.repository.RoleRepository;
 import academy.springbootlogin.repository.UserRepository;
-import academy.springbootlogin.requests.RolePostRequestBody;
-import academy.springbootlogin.requests.RolePutRequestBody;
 import academy.springbootlogin.requests.UserPostRequestBody;
 import academy.springbootlogin.requests.UserPutRequestBody;
 import lombok.RequiredArgsConstructor;
