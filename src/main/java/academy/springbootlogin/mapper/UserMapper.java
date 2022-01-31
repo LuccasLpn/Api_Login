@@ -1,7 +1,6 @@
 package academy.springbootlogin.mapper;
 
 
-import academy.springbootlogin.domain.Role;
 import academy.springbootlogin.domain.User;
 import academy.springbootlogin.requests.UserPostRequestBody;
 import academy.springbootlogin.requests.UserPutRequestBody;
@@ -15,7 +14,6 @@ public abstract class UserMapper {
 
     public abstract User toUserPost(UserPostRequestBody userPostRequestBody);
     public abstract User toUserPut(UserPutRequestBody userPutRequestBody);
-    public abstract Role toRolePost(UserPostRequestBody userPostRequestBody);
-    public abstract Role toRolePut(UserPutRequestBody userPutRequestBody);
+
 
 }

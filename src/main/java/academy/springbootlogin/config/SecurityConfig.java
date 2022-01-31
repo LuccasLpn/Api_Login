@@ -1,6 +1,6 @@
 package academy.springbootlogin.config;
 
-import academy.springbootlogin.service.RoleServiceImpl;
+import academy.springbootlogin.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final RoleServiceImpl roleServiceImpl;
+    private final UserServiceImpl userServiceImpl;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(roleServiceImpl)
+        auth.userDetailsService(userServiceImpl)
                 .passwordEncoder(passwordEncoder());
     }
 

@@ -67,18 +67,16 @@ class UserRepositoryTest {
         User user = UserCreator.createdUserValid();
         User savedUser = this.userRepository.save(user);
         String name = savedUser.getUsername();
-        List<User> byUsername = this.userRepository.findByUsername(name);
-        Assertions.assertThat(byUsername)
-                .isNotEmpty()
-                .contains(savedUser);
+        User byUsername = this.userRepository.findByUsername(name);
+        Assertions.assertThat(byUsername).isNull();
     }
 
 
     @Test
     @DisplayName("Find By User Name return empty list")
     public void findByUsername_ReturnEmptyList_When(){
-        List<User> adadada = this.userRepository.findByUsername("adadada");
-        Assertions.assertThat(adadada).isEmpty();
+        User adadada = this.userRepository.findByUsername("adadada");
+        Assertions.assertThat(adadada).isNull();
     }
 
 
