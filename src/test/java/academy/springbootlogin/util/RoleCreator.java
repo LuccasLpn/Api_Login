@@ -6,10 +6,10 @@ public class RoleCreator {
 
     public static Role createdRoleValid(){
         return Role.builder()
+                .id(1L)
                 .username("Luccas")
                 .password("LU072324")
                 .authorities("ROLE_ADMIN")
-                .id(1L)
                 .build();
 
     }
