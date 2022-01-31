@@ -3,6 +3,7 @@ package academy.springbootlogin.controller;
 import academy.springbootlogin.domain.User;
 import academy.springbootlogin.requests.UserPostRequestBody;
 import academy.springbootlogin.requests.UserPutRequestBody;
+import academy.springbootlogin.service.RoleService;
 import academy.springbootlogin.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,17 +18,20 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final RoleService roleService;
     private final PasswordEncoder encoder;
 
 
     @PostMapping(path = "/api/save")
-    public ResponseEntity<User>inser(@RequestBody @Valid UserPostRequestBody user){
+    public ResponseEntity<User>insert(@RequestBody @Valid UserPostRequestBody user){
+        roleService.save(user);
         user.setPassword(encoder.encode(user.getPassword()));
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/api/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+        roleService.delete(id);
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -36,6 +40,7 @@ public class UserController {
     public ResponseEntity<Void> replace(@RequestBody UserPutRequestBody userPutRequestBody) {
         userPutRequestBody.setPassword(encoder.encode(userPutRequestBody.getPassword()));
         userService.replace(userPutRequestBody);
+        roleService.replace(userPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

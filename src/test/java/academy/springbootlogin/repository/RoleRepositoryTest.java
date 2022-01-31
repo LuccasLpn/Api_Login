@@ -1,28 +1,26 @@
-package repository;
+package academy.springbootlogin.repository;
 
 import academy.springbootlogin.domain.Role;
-import academy.springbootlogin.repository.RoleRepository;
 import academy.springbootlogin.util.RoleCreator;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataJpaTest
 @DisplayName("Testing For RoleRepository")
 class RoleRepositoryTest {
 
+
     @Autowired
     private RoleRepository roleRepository;
-
 
 
 

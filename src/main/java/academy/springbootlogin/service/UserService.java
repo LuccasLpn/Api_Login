@@ -35,7 +35,6 @@ public class UserService {
                 .orElseThrow(() -> new BadCredentialsException("User Not Found"));
     }
 
-
     public void delete(long id) {
         userRepository.delete(findByIdOrThrowBadRequestException(id));
     }
@@ -49,6 +48,7 @@ public class UserService {
     }
 
     public List<User>findall(){
+
         return userRepository.findAll();
     }
 
