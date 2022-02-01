@@ -2,7 +2,6 @@ package academy.springbootlogin.service;
 
 import academy.springbootlogin.domain.User;
 import academy.springbootlogin.repository.UserRepository;
-import academy.springbootlogin.requests.UserPostRequestBody;
 import academy.springbootlogin.util.UserCreator;
 import academy.springbootlogin.util.UserPostRequestBodyCreator;
 import academy.springbootlogin.util.UserPutRequestBodyCreator;

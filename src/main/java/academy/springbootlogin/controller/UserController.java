@@ -23,7 +23,7 @@ public class UserController {
 
     @PostMapping(path = "/api/save")
     public ResponseEntity<User>insert(@RequestBody @Valid UserPostRequestBody user){
-  //      user.setPassword(encoder.encode(user.getPassword()));
+        user.setPassword(encoder.encode(user.getPassword()));
         return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
     }
 
@@ -35,7 +35,7 @@ public class UserController {
 
     @PutMapping(path = "/api/replace")
     public ResponseEntity<Void> replace(@RequestBody UserPutRequestBody userPutRequestBody) {
-       // userPutRequestBody.setPassword(encoder.encode(userPutRequestBody.getPassword()));
+        userPutRequestBody.setPassword(encoder.encode(userPutRequestBody.getPassword()));
         userService.replace(userPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

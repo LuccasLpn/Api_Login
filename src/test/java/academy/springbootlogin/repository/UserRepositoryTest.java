@@ -68,7 +68,7 @@ class UserRepositoryTest {
         User savedUser = this.userRepository.save(user);
         String name = savedUser.getUsername();
         User byUsername = this.userRepository.findByUsername(name);
-        Assertions.assertThat(byUsername).isNull();
+        Assertions.assertThat(byUsername).isNotNull();
     }
 
 
